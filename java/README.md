@@ -15,7 +15,7 @@ Download file [eclipse-java-google-style.xml](https://github.com/equinor/oilmod1
 1. Open `Window` → `Preferences and select Java` → `Code Style` → `Formatter`
 1. Import settings file by using `Import...` button
 
-## IntelliJ instructions
+## IntelliJ IDEA instructions
 Download file [intellij-java-google-style.xml](https://github.com/equinor/oilmod1-code-style/blob/master/java/eclipse-java-google-style.xml) from this repository.
 1. Go to `File` → `Settings and select Editor` → `Code Style`
 1. Click gear icon :gear:, choose from drop-down menu: `Import Scheme` → `Intellij IDEA code style XML` and import settings file
