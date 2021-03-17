@@ -1,4 +1,4 @@
-# What this repository is for?
+# What is the purpose of this repository?
 This repository contains helpers configuration files and instructions for different IDEs.
 Those should be used to configure developer IDEs with a correct code style.
 
