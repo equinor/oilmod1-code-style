@@ -307,4 +307,7 @@
     <property name="message" value="Leave blank line before end of class/interface/@interface/enum."/>
     <property name="fileExtensions" value="groovy,java"/>
   </module>
+  <module name="NewlineAtEndOfFile">
+    <property name="lineSeparator" value="crlf" />
+  </module>
 </module>
