@@ -21,6 +21,7 @@ Please, follow guides below in order to apply this code style.
 ## IntelliJ IDEA instructions
 
 Download file [./java/intellij/intellij-java-google-style.xml](https://github.com/equinor/oilmod1-code-style/blob/master/java/intellij/intellij-java-google-style.xml) from repository.
+
 1. Go to `File` → `Settings and select Editor` → `Code Style`
 2. Click gear icon :gear:, choose from drop-down menu: `Import Scheme` → `Intellij IDEA code style XML` and import settings file
 
