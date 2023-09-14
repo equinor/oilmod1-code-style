@@ -1,0 +1,14 @@
+name: reviewdog
+on: [pull_request]
+
+jobs:
+  markdown-lint:
+    name: runner / markdown-lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: markdownlint-github-pr-review
+        uses: ./
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
