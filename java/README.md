@@ -13,6 +13,7 @@ At present, we have two important rules in place:
 * Developers are discouraged from applying code style adjustments in bulk to existing code sections (such as entire classes, files, or packages) when only a few lines of code have been edited. This practice can complicate the review process and obscure the actual changes made to the code.
 
 # Installing code style settings into your IDE
+
 To make life easier, it is possible to adjust IDE settings to adhere to the code style.
 
 Please, follow guides below in order to apply this code style.
