@@ -25,6 +25,7 @@ Download file [./java/intellij/intellij-java-google-style.xml](https://github.co
 2. Click gear icon :gear:, choose from drop-down menu: `Import Scheme` → `Intellij IDEA code style XML` and import settings file
 
 ## Checkstyle plugin for IntelliJ IDEA
+
 Additional benefits can be obtained by installing the [CheckStyle-IDEA - IntelliJ IDEs Plugin | Marketplace](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) plugin.
 
 ### Install
