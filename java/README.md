@@ -20,10 +20,10 @@ Please, follow guides below in order to apply this code style.
 
 ### IntelliJ IDEA instructions
 
-Download file [./java/intellij/intellij-java-google-style.xml](https://github.com/equinor/oilmod1-code-style/blob/master/java/intellij/intellij-java-google-style.xml) from repository.
+Download file [./java/intellij/intellij-java-oilmod-style.xml](https://github.com/equinor/oilmod1-code-style/blob/master/java/intellij/intellij-java-oilmod-style.xml) from repository.
 
 1. Go to `File` → `Settings and select Editor` → `Code Style`
-2. Click gear icon :gear:, choose from drop-down menu: `Import Scheme` → `Intellij IDEA code style XML` and import settings file
+1. Click gear icon :gear:, choose from drop-down menu: `Import Scheme` → `Intellij IDEA code style XML` and import settings file
 
 ### Checkstyle plugin for IntelliJ IDEA
 
@@ -38,7 +38,8 @@ Additional benefits can be obtained by installing the [CheckStyle-IDEA - Intelli
 
 #### Configure
 
-1. Clone the equinor/oilmod1-code-style repository(or just download the configuration file: ./java/checkstyle/oilmod_checks.xml)
+1. Clone the [equinor/oilmod1-code-style](https://github.com/equinor/oilmod1-code-style) repository  
+(or just download the configuration file: [./java/checkstyle/oilmod_checks.xml](https://github.com/equinor/oilmod1-code-style/blob/master/java/checkstyle/oilmod_checks.xml)
 1. Open IntelliJ
 1. Go to File → Tools → Checkstyle 
 1. Configure plugin:
