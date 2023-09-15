@@ -43,22 +43,22 @@ Here's a quick guide:
 
 1. Commit your changes using the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) formatting for the commit messages.
 
-```shell
-git commit -m "conventional commit formatted message"
-```
+    ```shell
+    git commit -m "conventional commit formatted message"
+    ```
 
 1. Before sending the pull request, make sure to rebase onto the upstream source. This ensures your code is based on the latest available code.
 
-```shell
-git fetch upstream
-git rebase upstream/main
-```
+    ```shell
+    git fetch upstream
+    git rebase upstream/main
+    ```
 
 1. Push to your fork.
 
-```shell
-git push origin feature/my-new-feature
-```
+    ```shell
+    git push origin feature/my-new-feature
+    ```
 
 1. Submit a pull request to the original repository via GitHub interface.  
     * Please provide us with some explanation of why you made the changes you made.  
