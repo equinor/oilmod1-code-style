@@ -39,14 +39,14 @@ Additional benefits can be obtained by installing the [CheckStyle-IDEA - Intelli
 #### Configure
 
 1. Clone the [equinor/oilmod1-code-style](https://github.com/equinor/oilmod1-code-style) repository  
-(or just download the configuration file: [./java/checkstyle/oilmod_checks.xml](https://github.com/equinor/oilmod1-code-style/blob/master/java/checkstyle/oilmod_checks.xml))
+(or just download the configuration file: [./java/checkstyle/oilmod-checkstyle.xml](https://github.com/equinor/oilmod1-code-style/blob/master/java/checkstyle/oilmod-checkstyle.xml))
 1. Open IntelliJ
 1. Go to `File` → `Tools` → `Checkstyle`
 1. Configure plugin:
    * Set `Scan Scope` to `Only Java sources (including tests)` (excluding tests is default behaviour for the plugin and is wrong)
    * Check `Treat Checkstyle errors as warnings`
    * Check `Copy libraries from project directory`
-   * Click the `+` in the `Configuration File` section to import new configuration file: `./java/checkstyle/oilmod_checks.xml` (give it a sensible name, for example, “Oilmod Checks”)
+   * Click the `+` in the `Configuration File` section to import new configuration file: `./java/checkstyle/oilmod-checkstyle.xml` (give it a sensible name, for example, “Oilmod Checkstyle”)
 
 #### Use
 
