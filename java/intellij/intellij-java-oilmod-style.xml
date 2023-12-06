@@ -133,6 +133,8 @@
     <option name="WHILE_BRACE_FORCE" value="3" />
     <option name="FOR_BRACE_FORCE" value="3" />
     <option name="PARENT_SETTINGS_INSTALLED" value="true" />
+    <option name="BUILDER_METHODS" value="given,when,then,extract" />
+    <option name="KEEP_BUILDER_METHODS_INDENTS" value="true" />
     <indentOptions>
       <option name="INDENT_SIZE" value="4" />
       <option name="CONTINUATION_INDENT_SIZE" value="8" />
