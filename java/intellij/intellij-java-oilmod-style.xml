@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+    This configuration has been adjusted from the original Google Code Style IntelliJ configuration,
+    which can be found at https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml.
+
+    For more information, please refer Oilmod code style related article in Wiki.
+-->
+
 <code_scheme name="OilmodStyle">
   <option name="OTHER_INDENT_OPTIONS">
     <value>
