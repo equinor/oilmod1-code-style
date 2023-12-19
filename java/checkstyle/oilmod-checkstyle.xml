@@ -3,6 +3,13 @@
         "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
         "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
+<!-- 
+    This configuration has been adjusted from the original Google Checkstyle configuration,
+    which can be found at https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml.
+
+    For more information, please refer Oilmod code style related article in Wiki.
+-->
+
 <!--
     Checkstyle configuration that checks the Google coding conventions from Google Java Style
     that can be found at https://google.github.io/styleguide/javaguide.html
