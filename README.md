@@ -6,8 +6,6 @@ Those should be used to configure developer IDEs with a correct code style.
 
 ## License
 
-Content of this repository is released under the MIT License.
-
 Refer to the LICENSE file for further details.
 
 ## Contributing
