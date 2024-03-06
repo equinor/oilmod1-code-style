@@ -300,6 +300,11 @@
             <property name="file" value="${org.checkstyle.google.suppressionxpathfilter.config}" default="checkstyle-xpath-suppressions.xml"/>
             <property name="optional" value="true"/>
         </module>
+        <!--
+            Adds configuration to support "SuppressWarningsFilter" used for inline suppression of checks.
+            https://checkstyle.org/filters/suppresswarningsfilter.html#SuppressWarningsFilter 
+        -->
+        <module name="SuppressWarningsHolder" />
     </module>
     <module name="RegexpMultiline">
         <property name="id" value="RegexpMultilineEmptyRowAfterClassDef"/>
@@ -313,6 +318,6 @@
         <property name="message" value="Leave blank line before end of class/interface/@interface/enum."/>
         <property name="fileExtensions" value="groovy,java"/>
     </module>
-    <module name="NewlineAtEndOfFile">
-    </module>
+    <module name="NewlineAtEndOfFile" />
+    <module name="SuppressWarningsFilter" />
 </module>
