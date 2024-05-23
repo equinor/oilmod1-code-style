@@ -15,8 +15,6 @@
      - link to custom suppression files, under <module name="SuppressionFilter">
      - link to custom xpath suppression files, under <module name="SuppressionXpathFilter">
      - add check for TODO comments, under <module name="TodoComment">
-     - add check for empty line after class/interface/@interface/enum definition, under <module name="RegexpMultiline">
-     - add check for empty line before end of class/interface/@interface/enum, under <module name="RegexpMultiline">
      - add check for newline at end of file, under <module name="NewlineAtEndOfFile">
      - add check for suppressWarningsFilter, under <module name="SuppressWarningsFilter">
      and the changes are done in the span from 2019 - 2024
