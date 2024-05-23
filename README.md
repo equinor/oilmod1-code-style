@@ -6,7 +6,9 @@ Those should be used to configure developer IDEs with a correct code style.
 
 ## License
 
-Refer to the LICENSE file for further details.
+Files under the directory `java/intellij` are licensed under the Apache License, Version 2.0, see the `LICENSE` file for details.
+
+The file `java/checkstyle-oilmod-checkstyle.xml` is a modification of [checkstyle's](https://github.com/checkstyle/checkstyle) [google style guide](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml), and is licensed under the GNU LESSER GENERAL PUBLIC LICENSE, see the `LICENSE-checkstyle` file for details.
 
 ## Contributing
 
