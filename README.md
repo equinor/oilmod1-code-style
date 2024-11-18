@@ -1,4 +1,8 @@
-# What is the purpose of this repository?
+# OILMOD1 - Code style
+
+[![SCM Compliance](https://scm-compliance-api.radix.equinor.com/repos/equinor/a30af2d6-ea0e-468c-a8d6-1e4ebbd30d00/badge)](https://developer.equinor.com/governance/scm-policy/)
+
+## What is the purpose of this repository?
 
 This repository contains helpers configuration files and instructions for different IDEs.
 
