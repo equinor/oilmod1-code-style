@@ -1,4 +1,4 @@
-name: reviewdog
+name: lint
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ permissions: {}
 jobs:
 
   markdown-lint:
-    name: runner / markdown-lint
+    name: markdown
     runs-on: ubuntu-latest
 
     permissions:
