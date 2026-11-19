@@ -10,16 +10,21 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 indent_style = space
+indent_size = 2
+
+# Java and XML deviate from the 2-space default, as in the Oilmod1 IntelliJ scheme
+[*.{java,xml}]
 indent_size = 4
+# IntelliJ-specific
+ij_continuation_indent_size = 8
 
 [*.java]
 max_line_length = 160
-# IntelliJ-specific: continuation indent of 8, as in the Oilmod1 IntelliJ scheme
-ij_continuation_indent_size = 8
-
-[*.{yml,yaml,json}]
-indent_size = 2
 
 [*.md]
 # two trailing spaces are used as hard line breaks in markdown
 trim_trailing_whitespace = false
+
+# make requires tabs for recipe indentation
+[{Makefile,makefile,GNUmakefile,*.mk}]
+indent_style = tab
