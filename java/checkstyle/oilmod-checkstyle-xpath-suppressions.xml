@@ -5,7 +5,7 @@
     "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 
 <suppressions>
-    <!-- 
+    <!--
         an example xpath suppression file could be found here:
         https://github.com/checkstyle/checkstyle/blob/master/config/suppressions-xpath.xml
     -->
