@@ -31,7 +31,8 @@ The CheckStyle-IDEA plugin finds them next to the configuration file, but the Ch
 
 Required Checkstyle version:
 
-* **10.16.0 or later** from version `2024.05.23`, older Checkstyle versions fail to load the configuration
+* **14.2.0 or later** for `main` and versions after `2025.06.24`, which follow the Google configuration of Checkstyle 14.4.0 (Checkstyle 11+ requires Java 21)
+* 10.16.0 or later for versions `2024.05.23` and `2025.06.24`, older Checkstyle versions fail to load the configuration
 * 8.42 or later for version `2024.03.14`
 
 The configuration on `main` is verified in CI with the Checkstyle version set in [verify/pom.xml](checkstyle/verify/pom.xml).
@@ -82,7 +83,7 @@ Additional benefits can be obtained by installing the [CheckStyle-IDEA - Intelli
 1. Open IntelliJ
 1. Go to `File` → `Settings` → `Tools` → `Checkstyle`
 1. Configure plugin:
-   * Set `Checkstyle version` to a [supported version](#versions) (10.16.0 or later)
+   * Set `Checkstyle version` to a [supported version](#versions), for `main` and versions after `2025.06.24` 14.3.0 or later (the plugin does not offer 14.2.0, update the plugin if newer versions are missing)
    * Set `Scan Scope` to `Only Java sources (including tests)` (excluding tests is default behaviour for the plugin and is wrong)
    * Check `Treat Checkstyle errors as warnings`
    * Check `Copy libraries from project directory`

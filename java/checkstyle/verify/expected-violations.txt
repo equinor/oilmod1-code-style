@@ -10,6 +10,6 @@ sample/InvalidSample.java:14: AbbreviationAsWordInName
 # line wrapping indentation is 8, not 4
 sample/InvalidSample.java:20: Indentation
 # comment text must start with a space
-sample/InvalidSample.java:23: TodoComment#commentStartWithSpace
+sample/InvalidSample.java:23: WhitespaceAfter
 # files must end with a newline
 sample/MissingNewline.java:1: NewlineAtEndOfFile
