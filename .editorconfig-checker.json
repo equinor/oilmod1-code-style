@@ -1,0 +1,8 @@
+{
+  "Exclude": [
+    "^java/checkstyle/verify/src/invalid/"
+  ],
+  "Disable": {
+    "IndentSize": true
+  }
+}
