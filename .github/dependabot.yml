@@ -1,0 +1,23 @@
+version: 2
+
+updates:
+  - package-ecosystem: github-actions
+    open-pull-requests-limit: 10
+    directories:
+      - '/'
+    schedule:
+      interval: weekly
+      day: sunday
+    cooldown:
+      default-days: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    labels:
+      - github-actions
+      - dependencies
+    groups:
+      github-actions:
+        patterns:
+          # use wildcard to bundle plugins and libs into one PR
+          - "*"
