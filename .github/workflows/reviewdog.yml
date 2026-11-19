@@ -4,11 +4,18 @@ on:
   pull_request:
     types: [ opened, synchronize ]
 
+# set empty default permissions and define them explicitly in each job for security
+permissions: {}
+
 jobs:
 
   markdown-lint:
     name: runner / markdown-lint
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read        # actions/checkout
+      pull-requests: write  # reviewdog github-pr-review reporter posts review comments
 
     steps:
       - name: Checkout
