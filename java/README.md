@@ -54,6 +54,15 @@ Download file `intellij-java-oilmod-style.xml` of a [version](#versions) (or the
 1. Go to `File` → `Settings` → `Editor` → `Code Style`
 1. Click gear icon :gear:, choose from drop-down menu: `Import Scheme` → `IntelliJ IDEA code style XML` and import settings file
 
+The scheme also covers other languages. Apart from XML, which uses the Java settings, they follow their own style guides instead of the Java deviations:
+
+* Python: [Google Python style](https://google.github.io/styleguide/pyguide.html), 4 spaces indentation, 80 characters
+* JavaScript: [Google JavaScript style](https://google.github.io/styleguide/jsguide.html), 2 spaces indentation, 80 characters
+* Protocol Buffers: [protobuf style guide](https://protobuf.dev/programming-guides/style/), 2 spaces indentation, 80 characters
+* Objective-C: [Google Objective-C style](https://google.github.io/styleguide/objcguide.html), 2 spaces indentation, 100 characters
+
+The same limits are set in [.editorconfig](../.editorconfig).
+
 ### Checkstyle plugin for IntelliJ IDEA
 
 Additional benefits can be obtained by installing the [CheckStyle-IDEA - IntelliJ IDEs Plugin | Marketplace](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) plugin.

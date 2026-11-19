@@ -29,9 +29,19 @@ trim_trailing_whitespace = false
 [{Makefile,makefile,GNUmakefile,*.mk}]
 indent_style = tab
 
-# PEP 8
+# other languages follow their own style guides, as in the Oilmod1 IntelliJ scheme
+# Google Python style (4 spaces, 80 characters)
 [*.py]
 indent_size = 4
+max_line_length = 80
+
+# Google JavaScript style and protobuf style guide
+[*.{js,mjs,cjs,proto}]
+max_line_length = 80
+
+# Google Objective-C style
+[*.{m,mm}]
+max_line_length = 100
 
 # repository-specific: checkstyle sample that must stay without a final newline, omit when copying this file
 [java/checkstyle/verify/src/invalid/java/sample/MissingNewline.java]
