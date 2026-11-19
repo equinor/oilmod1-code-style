@@ -10,9 +10,9 @@ This document outlines the process to help ensure your contribution is accepted.
 
 There are several ways to contribute:
 
-* Suggest [features](https://github.com/equinor/oilmod1-code-style/issues/new?assignees=&labels=type%3A+%3Abulb%3A+feature+request&template=feature-request.md&title=)
-* Suggest [changes](https://github.com/equinor/oilmod1-code-style/issues/new?assignees=&labels=type%3A+%3Awrench%3A+maintenance&template=code-maintenance.md&title=)
-* Report [bugs](https://github.com/equinor/oilmod1-code-style/issues/new?assignees=&labels=type%3A+%3Abug+bug&template=bug-report.md&title=)
+* Suggest [features](https://github.com/equinor/oilmod1-code-style/issues/new?template=feature-request.md)
+* Suggest [changes](https://github.com/equinor/oilmod1-code-style/issues/new?template=code-maintenance.md)
+* Report [bugs](https://github.com/equinor/oilmod1-code-style/issues/new?template=bug-report.md)
 
 ## How to contribute your changes via PR
 
