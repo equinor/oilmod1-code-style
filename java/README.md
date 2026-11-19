@@ -18,12 +18,17 @@ To make life easier, it is possible to adjust IDE settings to adhere to the code
 
 Please, follow guides below in order to apply this code style.
 
+### EditorConfig
+
+Copy the [.editorconfig](../.editorconfig) file to the root of your project.
+It sets basic settings (encoding, line endings, indentation, maximum line length) and is supported by IntelliJ IDEA, Eclipse, VS Code and most other editors natively or via a plugin.
+
 ### IntelliJ IDEA instructions
 
-Download file [./java/intellij/intellij-java-oilmod-style.xml](https://github.com/equinor/oilmod1-code-style/blob/master/java/intellij/intellij-java-oilmod-style.xml) from repository.
+Download file [java/intellij/intellij-java-oilmod-style.xml](intellij/intellij-java-oilmod-style.xml) from repository.
 
-1. Go to `File` → `Settings and select Editor` → `Code Style`
-1. Click gear icon :gear:, choose from drop-down menu: `Import Scheme` → `Intellij IDEA code style XML` and import settings file
+1. Go to `File` → `Settings` → `Editor` → `Code Style`
+1. Click gear icon :gear:, choose from drop-down menu: `Import Scheme` → `IntelliJ IDEA code style XML` and import settings file
 
 ### Checkstyle plugin for IntelliJ IDEA
 
@@ -39,9 +44,9 @@ Additional benefits can be obtained by installing the [CheckStyle-IDEA - Intelli
 #### Configure
 
 1. Clone the [equinor/oilmod1-code-style](https://github.com/equinor/oilmod1-code-style) repository  
-(or just download the configuration file: [./java/checkstyle/oilmod-checkstyle.xml](https://github.com/equinor/oilmod1-code-style/blob/master/java/checkstyle/oilmod-checkstyle.xml))
+(or just download the configuration file: [java/checkstyle/oilmod-checkstyle.xml](checkstyle/oilmod-checkstyle.xml))
 1. Open IntelliJ
-1. Go to `File` → `Tools` → `Checkstyle`
+1. Go to `File` → `Settings` → `Tools` → `Checkstyle`
 1. Configure plugin:
    * Set `Scan Scope` to `Only Java sources (including tests)` (excluding tests is default behaviour for the plugin and is wrong)
    * Check `Treat Checkstyle errors as warnings`

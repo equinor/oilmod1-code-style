@@ -1,0 +1,7 @@
+# markdownlint configuration, used by the lint workflow and by editor plugins
+# rules: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+default: true
+
+# line length
+MD013: false

@@ -2,7 +2,7 @@ name: lint
 
 on:
   pull_request:
-    types: [ opened, synchronize ]
+    types: [ opened, synchronize, reopened, ready_for_review ]
 
 # set empty default permissions and define them explicitly in each job for security
 permissions: {}
@@ -28,4 +28,66 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-          markdownlint_flags: '**/*.md --ignore LICENSE.md --disable MD013 --' # disable line length rule
+          # directories, not globs: the action expands flags with sh, which has no '**' support
+          # rules are configured in .markdownlint.yaml
+          markdownlint_flags: '. .github'
+
+  actionlint:
+    name: actions
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read        # actions/checkout
+      pull-requests: write  # reviewdog github-pr-review reporter posts review comments
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: actionlint
+        uses: reviewdog/action-actionlint@ae857e78c1b42b3d0a49637181b09d3d56d402b4 # v1.84.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          fail_level: error
+
+  zizmor:
+    name: actions-security
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read  # actions/checkout, zizmor online audits
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: zizmor
+        uses: zizmorcore/zizmor-action@45d7276c9ca790aabd705e31ca99c6185c3e76dd # v0.8.1
+        with:
+          version: 1.32.0
+          # report as workflow annotations instead of uploading SARIF (would need security-events: write)
+          advanced-security: false
+          annotations: true
+
+  xml-lint:
+    name: xml
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read  # actions/checkout
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check XML files are well-formed
+        run: |
+          git ls-files -z '*.xml' \
+            | xargs -0 -n1 python3 -c 'import sys, xml.etree.ElementTree as ET; ET.parse(sys.argv[1]); print("ok:", sys.argv[1])'
