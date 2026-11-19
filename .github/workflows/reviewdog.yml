@@ -1,15 +1,19 @@
 name: reviewdog
 
 on:
-    pull_request:
-      types: [ opened, synchronize ]
+  pull_request:
+    types: [ opened, synchronize ]
 
 jobs:
+
   markdown-lint:
     name: runner / markdown-lint
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
       - name: markdown-lint
         uses: reviewdog/action-markdownlint@v0
         with:
