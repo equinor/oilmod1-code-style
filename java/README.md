@@ -26,7 +26,8 @@ Download the files of a version by replacing `main` with the tag in the URL, for
 * `https://raw.githubusercontent.com/equinor/oilmod1-code-style/2025.06.24/java/intellij/intellij-java-oilmod-style.xml`
 
 Keep the suppression files in the same directory as `oilmod-checkstyle.xml`.
-They are optional for checkstyle, so if they are missing, suppressions (for example of `dto` packages) are silently not applied.
+They are optional for checkstyle, so if they are not found, suppressions (for example of `dto` packages) are silently not applied.
+The CheckStyle-IDEA plugin finds them next to the configuration file, but the Checkstyle CLI, Maven and Gradle resolve them against the working directory, see [Checkstyle in Maven, Gradle or the CLI](#checkstyle-in-maven-gradle-or-the-cli).
 
 Required Checkstyle version:
 
@@ -82,3 +83,63 @@ Additional benefits can be obtained by installing the [CheckStyle-IDEA - Intelli
 After configuration is done, Checkstyle errors will appear as warnings in the editor.
 
 For additional benefits, search for "Checkstyle" in IntelliJ and select the option with a yellow pencil icon. This will add a Checkstyle window located near the Services, Terminal, and Git windows. Within this window, you'll find more options to scan the current file, module, and project, among other choices.
+
+## Checkstyle in Maven, Gradle or the CLI
+
+The configuration refers to the suppression files by file name only.
+Outside of the CheckStyle-IDEA plugin, Checkstyle resolves those names against the working directory, not against the directory of `oilmod-checkstyle.xml`.
+Set both suppression file properties explicitly, otherwise the suppressions are silently skipped.
+The examples below expect the three files of a [version](#versions) in `config/checkstyle/` of your project.
+
+### Maven
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+    <version>3.6.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>14.4.0</version>
+        </dependency>
+    </dependencies>
+    <configuration>
+        <configLocation>config/checkstyle/oilmod-checkstyle.xml</configLocation>
+        <!-- ${project.baseUri} instead of ${project.basedir}: backslashes of Windows paths would be treated as escapes -->
+        <propertyExpansion>
+            org.checkstyle.google.suppressionfilter.config=${project.baseUri}config/checkstyle/oilmod-checkstyle-suppressions.xml
+            org.checkstyle.google.suppressionxpathfilter.config=${project.baseUri}config/checkstyle/oilmod-checkstyle-xpath-suppressions.xml
+        </propertyExpansion>
+        <!-- the configuration reports all violations as warnings -->
+        <violationSeverity>warning</violationSeverity>
+    </configuration>
+</plugin>
+```
+
+### Gradle
+
+```groovy
+checkstyle {
+    toolVersion = '14.4.0'
+    configFile = file('config/checkstyle/oilmod-checkstyle.xml')
+    configProperties = [
+        'org.checkstyle.google.suppressionfilter.config'     : file('config/checkstyle/oilmod-checkstyle-suppressions.xml').path,
+        'org.checkstyle.google.suppressionxpathfilter.config': file('config/checkstyle/oilmod-checkstyle-xpath-suppressions.xml').path,
+    ]
+}
+```
+
+### Checkstyle CLI
+
+Create a properties file, for example `checkstyle.properties`, with paths relative to the directory you run Checkstyle from (use `/` also on Windows):
+
+```properties
+org.checkstyle.google.suppressionfilter.config=config/checkstyle/oilmod-checkstyle-suppressions.xml
+org.checkstyle.google.suppressionxpathfilter.config=config/checkstyle/oilmod-checkstyle-xpath-suppressions.xml
+```
+
+```shell
+java -jar checkstyle-14.4.0-all.jar -c config/checkstyle/oilmod-checkstyle.xml -p checkstyle.properties src
+```
