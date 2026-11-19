@@ -62,6 +62,7 @@ The scheme also covers other languages. Apart from XML, which uses the Java sett
 * Objective-C: [Google Objective-C style](https://google.github.io/styleguide/objcguide.html), 2 spaces indentation, 100 characters
 
 The same limits are set in [.editorconfig](../.editorconfig).
+It does not cover `.h` headers, since they are shared between Objective-C, C and C++; see the comment in `.editorconfig` for how to add them in Objective-C projects.
 
 ### Checkstyle plugin for IntelliJ IDEA
 

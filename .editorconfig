@@ -40,6 +40,10 @@ max_line_length = 80
 max_line_length = 80
 
 # Google Objective-C style
+# .h headers are not included, since they are shared with C and C++ (Google C++ style: 80 characters).
+# In Objective-C projects, add the headers with a scoped section, for example:
+#   [ios/**.h]
+#   max_line_length = 100
 [*.{m,mm}]
 max_line_length = 100
 
