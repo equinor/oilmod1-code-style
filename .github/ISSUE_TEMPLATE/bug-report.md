@@ -6,8 +6,8 @@ labels: 'type: :bug: bug'
 assignees: ''
 ---
 
-#### Expected Behaviour
+## Expected Behaviour
 
-#### Actual Behaviour
+## Actual Behaviour
 
-#### Steps to Reproduce
+## Steps to Reproduce
