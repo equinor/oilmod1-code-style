@@ -28,3 +28,11 @@ trim_trailing_whitespace = false
 # make requires tabs for recipe indentation
 [{Makefile,makefile,GNUmakefile,*.mk}]
 indent_style = tab
+
+# PEP 8
+[*.py]
+indent_size = 4
+
+# repository-specific: checkstyle sample that must stay without a final newline, omit when copying this file
+[java/checkstyle/verify/src/invalid/java/sample/MissingNewline.java]
+insert_final_newline = false

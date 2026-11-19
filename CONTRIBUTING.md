@@ -68,6 +68,22 @@ That's it... thank you for your contribution!
 
 After your pull request is merged, you can safely delete your branch.
 
+## Changing the checkstyle configuration
+
+Changes to `java/checkstyle/` are verified in CI by running checkstyle on sample sources in `java/checkstyle/verify/`:
+
+* `src/valid/java` follows the code style and must produce no violations.
+* `src/invalid/java` breaks the Oilmod1 deviations from the Google style and must produce exactly the violations listed in `expected-violations.txt`.
+
+Run the same check locally (requires Java 21+, Maven and Python 3):
+
+```shell
+mvn -f java/checkstyle/verify/pom.xml clean verify
+python java/checkstyle/verify/compare_violations.py
+```
+
+When adding or changing a deviation, add a sample to `src/valid/java` or `src/invalid/java` and update `expected-violations.txt`.
+
 ## Code review process
 
 The core team regularly reviews pull requests.

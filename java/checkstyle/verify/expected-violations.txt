@@ -1,0 +1,15 @@
+# Violations checkstyle must report for src/invalid/java, one per line: <file>:<line>: <check>[#<module id>]
+# Each one guards an Oilmod1 deviation from the Google style, see the header of oilmod-checkstyle.xml.
+
+# max line length is 160, not 100
+sample/InvalidSample.java:9: LineLength
+# indentation is 4, not 2
+sample/InvalidSample.java:12: Indentation
+# at most 2 consecutive capital letters
+sample/InvalidSample.java:14: AbbreviationAsWordInName
+# line wrapping indentation is 8, not 4
+sample/InvalidSample.java:20: Indentation
+# comment text must start with a space
+sample/InvalidSample.java:23: TodoComment#commentStartWithSpace
+# files must end with a newline
+sample/MissingNewline.java:1: NewlineAtEndOfFile
