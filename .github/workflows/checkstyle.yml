@@ -1,0 +1,35 @@
+name: checkstyle
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened, ready_for_review ]
+
+# set empty default permissions and define them explicitly in each job for security
+permissions: {}
+
+jobs:
+
+  verify:
+    name: verify config
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read  # actions/checkout
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Java
+        uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
+        with:
+          distribution: temurin
+          java-version: '21'  # required by checkstyle 11+
+
+      - name: Run checkstyle on sample sources
+        run: mvn --batch-mode --no-transfer-progress -f java/checkstyle/verify/pom.xml clean verify
+
+      - name: Compare violations with expected
+        run: python3 java/checkstyle/verify/compare_violations.py

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        Verifies oilmod-checkstyle.xml with sample sources, nothing is built or published:
+         - src/valid/java must produce no violations
+         - src/invalid/java must produce exactly the violations listed in expected-violations.txt (checked by compare_violations.py)
+        Run from the repository root: mvn -f java/checkstyle/verify/pom.xml verify && python java/checkstyle/verify/compare_violations.py
+    -->
+    <groupId>com.equinor.oilmod1</groupId>
+    <artifactId>oilmod-checkstyle-verify</artifactId>
+    <version>0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <checkstyle.version>14.4.0</checkstyle.version>
+        <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>${project.basedir}/../oilmod-checkstyle.xml</configLocation>
+                    <!-- URIs instead of paths: backslashes in Windows paths would be treated as escapes here -->
+                    <propertyExpansion>
+                        org.checkstyle.google.suppressionfilter.config=${project.baseUri}../oilmod-checkstyle-suppressions.xml
+                        org.checkstyle.google.suppressionxpathfilter.config=${project.baseUri}../oilmod-checkstyle-xpath-suppressions.xml
+                    </propertyExpansion>
+                    <includeResources>false</includeResources>
+                    <includeTestResources>false</includeTestResources>
+                    <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                    <consoleOutput>true</consoleOutput>
+                    <!-- the config reports everything as warning -->
+                    <violationSeverity>warning</violationSeverity>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>valid-samples</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectories>
+                                <sourceDirectory>${project.basedir}/src/valid/java</sourceDirectory>
+                            </sourceDirectories>
+                            <outputFile>${project.build.directory}/checkstyle-valid.xml</outputFile>
+                            <failOnViolation>true</failOnViolation>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>invalid-samples</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectories>
+                                <sourceDirectory>${project.basedir}/src/invalid/java</sourceDirectory>
+                            </sourceDirectories>
+                            <outputFile>${project.build.directory}/checkstyle-invalid.xml</outputFile>
+                            <failOnViolation>false</failOnViolation>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

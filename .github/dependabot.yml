@@ -21,3 +21,23 @@ updates:
         patterns:
           # use wildcard to bundle plugins and libs into one PR
           - "*"
+
+  # checkstyle and maven-checkstyle-plugin used to verify the checkstyle config in CI
+  - package-ecosystem: maven
+    open-pull-requests-limit: 10
+    directories:
+      - '/java/checkstyle/verify'
+    schedule:
+      interval: weekly
+      day: sunday
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: chore
+      include: scope
+    labels:
+      - dependencies
+    groups:
+      checkstyle:
+        patterns:
+          - "*"
