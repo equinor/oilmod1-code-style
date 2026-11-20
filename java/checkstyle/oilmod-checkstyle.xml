@@ -18,12 +18,16 @@
      - allowedAbbreviationLength 1 instead of 0, under <module name="AbbreviationAsWordInName">
      - Javadoc is not required: <module name="JavadocMethod">, <module name="MissingJavadocMethod">
        and <module name="MissingJavadocType"> are removed
+     - comment text must start with a space, under <module name="TodoComment"> with id commentStartWithSpace,
+       instead of SINGLE_LINE_COMMENT in <module name="WhitespaceAfter">, which throws on a file ending in // without newline
      - method names use <module name="MethodName"> with the pattern of earlier upstream versions instead of
        <module name="GoogleMethodName">, which rejects consecutive capitals and so abbreviations like getID
      - files must end with a newline, under <module name="NewlineAtEndOfFile">
      - oilmod suppression file names, under <module name="SuppressionFilter"> and <module name="SuppressionXpathFilter">
      - text blocks are not exempt from LineLength: the upstream SuppressWithPlainTextCommentFilter for it is removed,
        since a closing """ on its own line left LineLength disabled for the rest of the file
+     - "CHECKSTYLE.SUPPRESS: Check for +N lines" must follow a comment marker (//, /*, *, # or the XML comment start), so text in
+       string literals does not suppress violations, under <module name="SuppressWithNearbyTextFilter">
      - "CHECKSTYLE.SUPPRESS: Check for +N lines" no longer also suppresses the next line,
        under <module name="SuppressWithNearbyCommentFilter">
      - Indentation of text block quotes at column 0 is suppressed with a zero-range SuppressWithNearbyTextFilter instead
@@ -63,7 +67,7 @@
   <!-- https://checkstyle.org/filters/suppresswithnearbytextfilter.html -->
   <module name="SuppressWithNearbyTextFilter">
     <property name="nearbyTextPattern"
-              value="CHECKSTYLE.SUPPRESS\: (\w+) for ([+-]\d+) lines"/>
+              value="(?://|/\*|\*|#|&lt;!--)\s*CHECKSTYLE.SUPPRESS\: (\w+) for ([+-]\d+) lines"/>
     <property name="checkPattern" value="$1"/>
     <property name="lineRange" value="$2"/>
   </module>
@@ -158,8 +162,7 @@
     <module name="GoogleRightCurly"/>
     <module name="WhitespaceAfter">
       <property name="tokens"
-               value="COMMA, SEMI, TYPECAST, ELLIPSIS, LITERAL_YIELD, LITERAL_CASE, ANNOTATIONS,
-                    SINGLE_LINE_COMMENT"/>
+               value="COMMA, SEMI, TYPECAST, ELLIPSIS, LITERAL_YIELD, LITERAL_CASE, ANNOTATIONS"/>
     </module>
     <module name="WhitespaceAround">
       <property name="allowEmptyConstructors" value="true"/>
@@ -460,6 +463,15 @@
       <message key="todo.match"
                value="Comment uses box-like repetitive character pattern."/>
     </module>
+    <!--
+      whitespace after double slash in the beginning of comment line
+      It is a workaround until this issue is implemented: https://github.com/checkstyle/checkstyle/issues/8137
+    -->
+    <module name="TodoComment">
+      <property name="id" value="commentStartWithSpace"/>
+      <property name="format" value="^([^\s\/*])"/>
+      <message key="todo.match" value="Comment text should start with space."/>
+    </module>
     <module name="EmptyCatchBlock">
       <property name="commentFormat" value="\w+"/>
     </module>
@@ -486,7 +498,8 @@
       <property name="checkFormat" value="$1" />
     </module>
     <module name="SuppressWithNearbyCommentFilter">
-      <property name="commentFormat" value="CHECKSTYLE.SUPPRESS\: (?!\w++ for [+-]\d+ lines)([\w\|]+)"/>
+      <property name="commentFormat"
+                value="CHECKSTYLE.SUPPRESS\: (?!(?&lt;=^(?://|/\*)?[\s*]{0,20}CHECKSTYLE.SUPPRESS\: )\w++ for [+-]\d+ lines)([\w\|]+)"/>
       <!-- $1 refers to the first match group in the regex defined in commentFormat -->
       <property name="checkFormat" value="$1"/>
       <!-- The check is suppressed in the next line of code after the comment -->

@@ -47,8 +47,8 @@ max_line_length = 80
 [*.{m,mm}]
 max_line_length = 100
 
-# repository-specific: checkstyle sample that must stay without a final newline, omit when copying this file
-[java/checkstyle/verify/src/invalid/java/sample/MissingNewline.java]
+# repository-specific: checkstyle samples that must stay without a final newline, omit when copying this file
+[java/checkstyle/verify/src/invalid/java/sample/{MissingNewline,EofComment}.java]
 insert_final_newline = false
 
 # repository-specific: keeps the formatting of the upstream Google configuration to ease syncing, omit when copying this file
