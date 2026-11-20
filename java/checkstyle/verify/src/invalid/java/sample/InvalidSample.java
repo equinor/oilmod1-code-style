@@ -41,4 +41,10 @@ public class InvalidSample {
 
     // a text block closed by """ on its own line must not disable the line length check, the next line is 161 characters long
     private static final String TOO_LONG_AFTER_TEXT_BLOCK = "..................................................................................................";
+
+    ///markdown doc comment without a leading space
+    private int markdownDoc;
+
+    //*comment starting with a star
+    private int starComment;
 }

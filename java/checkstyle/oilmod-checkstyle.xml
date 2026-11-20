@@ -26,6 +26,8 @@
        since a closing """ on its own line left LineLength disabled for the rest of the file
      - "CHECKSTYLE.SUPPRESS: Check for +N lines" no longer also suppresses the next line,
        under <module name="SuppressWithNearbyCommentFilter">
+     - Indentation of text block quotes at column 0 is suppressed with a zero-range SuppressWithNearbyTextFilter instead
+       of the upstream SuppressWithPlainTextCommentFilter, which tags every non-empty line and slows down large files
 -->
 
 <!--
@@ -86,10 +88,10 @@
     <property name="ignorePattern"
              value="^package.*|^import.*|href\s*=\s*&quot;[^&quot;]*&quot;|http://|https://|ftp://"/>
   </module>
-  <module name="SuppressWithPlainTextCommentFilter">
-    <property name="checkFormat" value="\.IndentationCheck$"/>
-    <property name="offCommentFormat" value='^""".?'/>
-    <property name="onCommentFormat" value='.'/>
+  <module name="SuppressWithNearbyTextFilter">
+    <property name="nearbyTextPattern" value='^""".?'/>
+    <property name="checkPattern" value="\.IndentationCheck$"/>
+    <property name="lineRange" value="0"/>
   </module>
   <module name="TreeWalker">
     <module name="IllegalTokenText">
@@ -484,7 +486,7 @@
       <property name="checkFormat" value="$1" />
     </module>
     <module name="SuppressWithNearbyCommentFilter">
-      <property name="commentFormat" value="CHECKSTYLE.SUPPRESS\: ([\w\|]++)(?!\s+for\s+[+-]?\d+\s+lines)"/>
+      <property name="commentFormat" value="CHECKSTYLE.SUPPRESS\: (?!\w++ for [+-]\d+ lines)([\w\|]+)"/>
       <!-- $1 refers to the first match group in the regex defined in commentFormat -->
       <property name="checkFormat" value="$1"/>
       <!-- The check is suppressed in the next line of code after the comment -->

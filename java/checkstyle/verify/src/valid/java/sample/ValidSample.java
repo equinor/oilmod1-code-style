@@ -65,4 +65,11 @@ public class ValidSample {
     public String writeCSVFile() {
         return LONGEST_ALLOWED_LINE;
     }
+
+    // forms the ranged filter does not support (here: more than one check) fall back to suppressing the next line
+    // CHECKSTYLE.SUPPRESS: AbbreviationAsWordInName|MethodName for +1 lines
+    public String writeXMLFile() {
+        /*block comments are not checked for a leading space*/
+        return LONGEST_ALLOWED_LINE;
+    }
 }

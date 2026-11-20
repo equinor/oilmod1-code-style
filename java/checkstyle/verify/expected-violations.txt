@@ -15,5 +15,8 @@ sample/InvalidSample.java:23: WhitespaceAfter
 sample/InvalidSample.java:31: AbbreviationAsWordInName
 # a text block closed by """ on its own line must not disable LineLength for the rest of the file
 sample/InvalidSample.java:43: LineLength
+# single-line comments need a space after the slashes, also /// and //* (block comments are not checked)
+sample/InvalidSample.java:45: WhitespaceAfter
+sample/InvalidSample.java:48: WhitespaceAfter
 # files must end with a newline
 sample/MissingNewline.java:1: NewlineAtEndOfFile
