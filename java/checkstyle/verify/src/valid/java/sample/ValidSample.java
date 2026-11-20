@@ -76,5 +76,5 @@ public class ValidSample {
 
     // a suppression directive in a trailing comment works after string literals containing //
     private final String url = "https://example.com"; // CHECKSTYLE.SUPPRESS: LineLength for +1 lines
-    private static final String LONG_URL = "............................................................................................................................";
+    private static final String LONG_URL = "............................................................................................................................"; // editorconfig-checker-disable-line
 }
