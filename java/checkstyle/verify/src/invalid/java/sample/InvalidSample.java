@@ -46,6 +46,11 @@ public class InvalidSample {
     private int blockComment;
 
     // a suppression directive in a string literal must not suppress violations, the next line is 161 characters long
-    private static final String DIRECTIVE = "CHECKSTYLE.SUPPRESS: LineLength for +1 lines";
+    private static final String DIRECTIVE = "// CHECKSTYLE.SUPPRESS: LineLength for +1 lines";
     private static final String TOO_LONG_AFTER_LITERAL = ".....................................................................................................";
+
+    // however many spaces follow //, a suppression for previous lines must not also suppress the next line
+    private int prevSpacedXMLValue;
+    //                         CHECKSTYLE.SUPPRESS: AbbreviationAsWordInName for -1 lines
+    private int afterSpacedXMLValue;
 }

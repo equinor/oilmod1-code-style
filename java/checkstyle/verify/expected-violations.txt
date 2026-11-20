@@ -16,8 +16,10 @@ sample/InvalidSample.java:45: TodoComment#commentStartWithSpace
 sample/InvalidSample.java:31: AbbreviationAsWordInName
 # a text block closed by """ on its own line must not disable LineLength for the rest of the file
 sample/InvalidSample.java:43: LineLength
-# a suppression directive in a string literal must not suppress violations
+# a suppression directive in a string literal must not suppress violations, even with a comment marker
 sample/InvalidSample.java:50: LineLength
+# however many spaces follow //, a "for -1 lines" comment must not also suppress the next line
+sample/InvalidSample.java:55: AbbreviationAsWordInName
 # files must end with a newline
 sample/MissingNewline.java:1: NewlineAtEndOfFile
 # a file ending in // without newline must be reported, not make checkstyle fail

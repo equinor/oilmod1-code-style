@@ -26,8 +26,9 @@
      - oilmod suppression file names, under <module name="SuppressionFilter"> and <module name="SuppressionXpathFilter">
      - text blocks are not exempt from LineLength: the upstream SuppressWithPlainTextCommentFilter for it is removed,
        since a closing """ on its own line left LineLength disabled for the rest of the file
-     - "CHECKSTYLE.SUPPRESS: Check for +N lines" must follow a comment marker (//, /*, *, # or the XML comment start), so text in
-       string literals does not suppress violations, under <module name="SuppressWithNearbyTextFilter">
+     - "CHECKSTYLE.SUPPRESS: Check for +N lines" must follow a comment marker (//, /*, *, # or the XML comment start)
+       outside of string and char literals on the same line, so text in literals does not suppress violations,
+       under <module name="SuppressWithNearbyTextFilter">
      - "CHECKSTYLE.SUPPRESS: Check for +N lines" no longer also suppresses the next line,
        under <module name="SuppressWithNearbyCommentFilter">
      - Indentation of text block quotes at column 0 is suppressed with a zero-range SuppressWithNearbyTextFilter instead
@@ -67,7 +68,7 @@
   <!-- https://checkstyle.org/filters/suppresswithnearbytextfilter.html -->
   <module name="SuppressWithNearbyTextFilter">
     <property name="nearbyTextPattern"
-              value="(?://|/\*|\*|#|&lt;!--)\s*CHECKSTYLE.SUPPRESS\: (\w+) for ([+-]\d+) lines"/>
+              value="^(?:[^&quot;'/]|/(?![/*])|/\*(?:(?!\*/).)*\*/|&quot;(?:[^&quot;\\]|\\.)*&quot;|'(?:[^'\\]|\\.)*')*?(?://|/\*|\*|#|&lt;!--)\s*CHECKSTYLE.SUPPRESS\: (\w+) for ([+-]\d+) lines"/>
     <property name="checkPattern" value="$1"/>
     <property name="lineRange" value="$2"/>
   </module>
@@ -499,7 +500,7 @@
     </module>
     <module name="SuppressWithNearbyCommentFilter">
       <property name="commentFormat"
-                value="CHECKSTYLE.SUPPRESS\: (?!(?&lt;=^(?://|/\*)?[\s*]{0,20}CHECKSTYLE.SUPPRESS\: )\w++ for [+-]\d+ lines)([\w\|]+)"/>
+                value="^(?!(?://|/\*)?[\s*]*+CHECKSTYLE.SUPPRESS\: \w++ for [+-]\d+ lines).*?CHECKSTYLE.SUPPRESS\: ([\w\|]+)"/>
       <!-- $1 refers to the first match group in the regex defined in commentFormat -->
       <property name="checkFormat" value="$1"/>
       <!-- The check is suppressed in the next line of code after the comment -->
