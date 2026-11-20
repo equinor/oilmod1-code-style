@@ -22,6 +22,10 @@
        <module name="GoogleMethodName">, which rejects consecutive capitals and so abbreviations like getID
      - files must end with a newline, under <module name="NewlineAtEndOfFile">
      - oilmod suppression file names, under <module name="SuppressionFilter"> and <module name="SuppressionXpathFilter">
+     - text blocks are not exempt from LineLength: the upstream SuppressWithPlainTextCommentFilter for it is removed,
+       since a closing """ on its own line left LineLength disabled for the rest of the file
+     - "CHECKSTYLE.SUPPRESS: Check for +N lines" no longer also suppresses the next line,
+       under <module name="SuppressWithNearbyCommentFilter">
 -->
 
 <!--
@@ -81,12 +85,6 @@
     <property name="max" value="160"/>
     <property name="ignorePattern"
              value="^package.*|^import.*|href\s*=\s*&quot;[^&quot;]*&quot;|http://|https://|ftp://"/>
-  </module>
-  <!--  Suppression to prevent LineLength Check from flagging lines in Text-blocks -->
-  <module name="SuppressWithPlainTextCommentFilter">
-    <property name="checkFormat" value="LineLength"/>
-    <property name="offCommentFormat" value='^.*"""\s*$'/>
-    <property name="onCommentFormat" value='^\s*"""\s*(?:[,;]|.+)$'/>
   </module>
   <module name="SuppressWithPlainTextCommentFilter">
     <property name="checkFormat" value="\.IndentationCheck$"/>
@@ -486,7 +484,7 @@
       <property name="checkFormat" value="$1" />
     </module>
     <module name="SuppressWithNearbyCommentFilter">
-      <property name="commentFormat" value="CHECKSTYLE.SUPPRESS\: ([\w\|]+)"/>
+      <property name="commentFormat" value="CHECKSTYLE.SUPPRESS\: ([\w\|]++)(?!\s+for\s+[+-]?\d+\s+lines)"/>
       <!-- $1 refers to the first match group in the regex defined in commentFormat -->
       <property name="checkFormat" value="$1"/>
       <!-- The check is suppressed in the next line of code after the comment -->

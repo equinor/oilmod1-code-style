@@ -24,4 +24,21 @@ public class InvalidSample {
     public int value() {
         return value;
     }
+
+    // a suppression for previous lines must not also suppress the next line
+    private int parseXMLValue;
+    // CHECKSTYLE.SUPPRESS: AbbreviationAsWordInName for -1 lines
+    private int parseHTMLValue;
+
+    public String query() {
+        String sql =
+                """
+                SELECT id
+                """
+                .stripIndent();
+        return sql;
+    }
+
+    // a text block closed by """ on its own line must not disable the line length check, the next line is 161 characters long
+    private static final String TOO_LONG_AFTER_TEXT_BLOCK = "..................................................................................................";
 }

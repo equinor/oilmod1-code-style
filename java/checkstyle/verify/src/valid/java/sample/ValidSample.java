@@ -60,4 +60,9 @@ public class ValidSample {
         return LONGEST_ALLOWED_LINE;
     }
     // CHECKSTYLE.ON: AbbreviationAsWordInName
+
+    // CHECKSTYLE.SUPPRESS: AbbreviationAsWordInName for +1 lines
+    public String writeCSVFile() {
+        return LONGEST_ALLOWED_LINE;
+    }
 }
