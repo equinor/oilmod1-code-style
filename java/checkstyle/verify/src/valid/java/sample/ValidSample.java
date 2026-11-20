@@ -60,4 +60,21 @@ public class ValidSample {
         return LONGEST_ALLOWED_LINE;
     }
     // CHECKSTYLE.ON: AbbreviationAsWordInName
+
+    // CHECKSTYLE.SUPPRESS: AbbreviationAsWordInName for +1 lines
+    public String writeCSVFile() {
+        return LONGEST_ALLOWED_LINE;
+    }
+
+    // forms the ranged filter does not support (here: more than one check) fall back to suppressing the next line
+    // CHECKSTYLE.SUPPRESS: AbbreviationAsWordInName|MethodName for +1 lines
+    public String writeXMLFile() {
+        ///markdown doc comments and //* comments are allowed without a space
+        //*
+        return LONGEST_ALLOWED_LINE;
+    }
+
+    // a suppression directive in a trailing comment works after string literals containing //
+    private final String url = "https://example.com"; // CHECKSTYLE.SUPPRESS: LineLength for +1 lines
+    private static final String LONG_URL = "............................................................................................................................"; // editorconfig-checker-disable-line
 }

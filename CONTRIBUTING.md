@@ -84,6 +84,17 @@ python java/checkstyle/verify/compare_violations.py
 
 When adding or changing a deviation, add a sample to `src/valid/java` or `src/invalid/java` and update `expected-violations.txt`.
 
+### Syncing with the Google configuration
+
+`oilmod-checkstyle.xml` is the `google_checks.xml` of a Checkstyle release with the Oilmod1 changes listed in its header comment.
+It keeps the upstream formatting, so a diff with the original shows only those changes.
+To sync with a newer Checkstyle release:
+
+1. Take `src/main/resources/google_checks.xml` of the release tag from [checkstyle/checkstyle](https://github.com/checkstyle/checkstyle) (for example tag `checkstyle-14.4.0`).
+1. Re-apply the changes listed in the header comment and update the Checkstyle version and date in it.
+1. Set the same Checkstyle version in `java/checkstyle/verify/pom.xml` and run the check above. New upstream checks can conflict with an Oilmod1 change, as `GoogleMethodName` did with abbreviations.
+1. Find the minimum Checkstyle version that loads the configuration and update the required version in [java/README.md](java/README.md#versions).
+
 ## Code review process
 
 The core team regularly reviews pull requests.
